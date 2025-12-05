@@ -1,99 +1,223 @@
-/* ----------------------
-   FitAxis V1 – Styles widget
-   ---------------------- */
+/* ---------------------------
+   FitAxis – UI premium V1
+---------------------------- */
 
-/* --- Bouton principal --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background: #f5f5f7;
+  color: #111;
+}
+
+/* Bouton principal */
+
 #fitaxis-btn {
-  background: #111; 
-  color: white;
+  background: #111;
+  color: #fff;
   padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 999px;
   border: none;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+#fitaxis-btn::after {
+  content: "↗";
+  font-size: 13px;
 }
 
 #fitaxis-btn:hover {
-  background: #333;
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
 }
 
-/* --- Overlay pop-up --- */
+/* Overlay */
+
 #fitaxis-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(15,15,25,0.35);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 99999;
 }
 
-/* --- Contenu pop-up --- */
-.fitaxis-content {
-  background: white;
-  width: 320px;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+/* Carte principale */
+
+.fitaxis-card {
+  width: 360px;
+  background: #f9f9fb;
+  border-radius: 20px;
+  padding: 20px 22px 18px;
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.18),
+    0 0 0 1px rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
-.fitaxis-content h2 {
-  margin-top: 0;
-  color: #111;
+/* Header */
+
+.fitaxis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.fitaxis-header h2 {
+  margin: 0;
+  font-size: 18px;
   font-weight: 700;
-  font-size: 20px;
-  text-align: center;
 }
 
-.fitaxis-content label {
-  font-size: 14px;
+.fitaxis-header p {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+#fitaxis-close {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #777;
+  padding: 2px 4px;
+  border-radius: 999px;
+}
+
+#fitaxis-close:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* Grille champs */
+
+.fitaxis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.fitaxis-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.fitaxis-field label {
+  font-size: 12px;
   font-weight: 600;
-  color: #333;
   margin-bottom: 4px;
-  display: block;
+  color: #444;
 }
 
-/* --- Inputs / Selects --- */
-.fitaxis-content input,
-.fitaxis-content select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  background: #f8f8f8;
+/* Inputs / selects */
+
+.fitaxis-field input,
+.fitaxis-field select {
+  padding: 8px 9px;
+  border-radius: 9px;
+  border: 1px solid #d0d0d5;
+  background: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
-/* --- Bouton "Trouver ma taille" --- */
+.fitaxis-field input:focus,
+.fitaxis-field select:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 0 1px rgba(0,122,255,0.15);
+}
+
+/* Bouton "Calculer ma taille" */
+
 #fitaxis-submit {
   width: 100%;
-  padding: 12px;
-  background: #111;
-  color: white;
+  margin-top: 4px;
+  padding: 10px 14px;
+  border-radius: 999px;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  background: #111;
+  color: #fff;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
 }
 
 #fitaxis-submit:hover {
-  background: #333;
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.28);
 }
 
-/* --- Zone résultat --- */
-#fitaxis-result {
-  margin-top: 14px;
-  padding: 10px;
-  background: #f1f1f1;
-  border-radius: 8px;
-  font-size: 15px;
+/* Zone résultat */
+
+.fitaxis-result {
+  margin-top: 12px;
+  min-height: 46px;
+  font-size: 13px;
+  color: #444;
+}
+
+.fitaxis-hint {
+  color: #777;
+}
+
+.fitaxis-loading {
+  color: #007aff;
+}
+
+/* Bloc résultat taille */
+
+.fitaxis-size-block {
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #ffffff, #f1f1f6);
+  border: 1px solid rgba(0,0,0,0.04);
+  display: grid;
+  gap: 3px;
+  text-align: center;
+}
+
+.fitaxis-size-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+
+.fitaxis-size-value {
+  font-size: 24px;
+  font-weight: 700;
   color: #111;
+}
+
+.fitaxis-size-comment {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Messages */
+
+.fitaxis-error {
+  color: #c0392b;
+  font-size: 13px;
+}
+
+.fitaxis-footer {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #999;
   text-align: center;
 }
