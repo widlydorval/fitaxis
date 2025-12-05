@@ -44,13 +44,15 @@ async function sendFitAxisData() {
     sku: "SKU123"
   };
 
-  const response = await fetch("http://127.0.0.1:8000/recommendation", {
+  const response = await fetch("https://fitaxis-aif2.onrender.com/recommendation", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   });
 
   const result = await response.json();
+  console.log("Reponse API :", result);
+  
   document.getElementById("fitaxis-result").innerHTML =
     `Taille recommandée : <b>${result.recommended_size}</b><br>${result.fit_comment}`;
 }
