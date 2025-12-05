@@ -1,0 +1,99 @@
+/* ----------------------
+   FitAxis V1 – Styles widget
+   ---------------------- */
+
+/* --- Bouton principal --- */
+#fitaxis-btn {
+  background: #111; 
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#fitaxis-btn:hover {
+  background: #333;
+}
+
+/* --- Overlay pop-up --- */
+#fitaxis-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+/* --- Contenu pop-up --- */
+.fitaxis-content {
+  background: white;
+  width: 320px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.fitaxis-content h2 {
+  margin-top: 0;
+  color: #111;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.fitaxis-content label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* --- Inputs / Selects --- */
+.fitaxis-content input,
+.fitaxis-content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f8f8f8;
+}
+
+/* --- Bouton "Trouver ma taille" --- */
+#fitaxis-submit {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#fitaxis-submit:hover {
+  background: #333;
+}
+
+/* --- Zone résultat --- */
+#fitaxis-result {
+  margin-top: 14px;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #111;
+  text-align: center;
+}
