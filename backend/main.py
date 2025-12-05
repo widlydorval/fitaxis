@@ -4,10 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Autoriser les requêtes du frontend local
+# Autoriser les requêtes du frontend (Netlify, local, etc.)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # à restreindre en prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,8 +40,12 @@ PRODUCTS = {
 
 @app.post("/recommendation")
 def recommend(data: FitInput):
+    """
+    Version PROD V1.1 - formule calibrée pour S/M/L/XL.
+    """
 
     # 1. Formule de base calibrée pour correspondre au size chart
+    # Référence : 175 cm / 70 kg ≈ taille M (52 cm de demi-tour de poitrine)
     chest = 52 + (data.height_cm - 175) * 0.2 + (data.weight_kg - 70) * 0.3
 
     # 2. Ajustement selon la préférence du client
